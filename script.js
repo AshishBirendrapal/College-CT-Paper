@@ -204,3 +204,59 @@ async function testFirebase() {
 }
 
 testFirebase();
+
+
+/* ================= UPLOAD PAPER TO FIRESTORE ================= */
+
+async function submitPaper() {
+
+    const branch = document.getElementById("branch").value;
+    const semester = document.getElementById("semester").value;
+    const subject = document.getElementById("subject").value;
+    const ctNumber = document.getElementById("ctNumber").value;
+    const year = document.getElementById("year").value;
+
+    if (!branch || !semester || !subject || !ctNumber || !year) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    try {
+
+        await addDoc(collection(db, "papers"), {
+
+            branch: branch,
+            semester: semester,
+            subject: subject,
+            ctNumber: ctNumber,
+            year: year,
+
+            fileUrl: "",
+
+            status: "pending",
+
+            uploadedAt: serverTimestamp()
+
+        });
+
+        alert("Paper submitted successfully! Admin approval ke baad paper visible hoga.");
+
+        closeUpload();
+
+    } catch (error) {
+
+        console.error("Upload Error:", error);
+
+        alert("Paper submit nahi hua. Console check karo.");
+
+    }
+
+}
+window.openUpload = openUpload;
+window.closeUpload = closeUpload;
+window.toggleMenu = toggleMenu;
+window.filterPapers = filterPapers;
+window.filterBranch = filterBranch;
+window.searchPapers = searchPapers;
+window.viewPaper = viewPaper;
+window.submitPaper = submitPaper;
