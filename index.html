@@ -1,904 +1,1019 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>CT Paper Portal | Rajkiya Engineering College, Bijnor</title>
+    <title>College CT Papers | RECB</title>
 
-    <link rel="stylesheet" href="style.css">
+    <meta name="description"
+        content="Rajkiya Engineering College, Bijnor - Previous CT Papers Repository">
 
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
 
-<header class="navbar">
+    <header class="navbar">
 
-    <div class="nav-container">
+        <div class="nav-container">
 
-        <a href="#home" class="brand">
+            <a href="index.html" class="brand">
 
-            <div class="logo-box">
-                <img src="images.jpg"
-                     alt="College Logo"
-                     onerror="this.style.display='none'; this.parentElement.classList.add('logo-fallback');">
-                <span class="logo-fallback-text">REC</span>
-            </div>
+                <div class="logo-box">
+                    <img src="images.jpg"
+                        alt="College Logo"
+                        onerror="this.style.display='none'; this.parentElement.classList.add('logo-fallback');">
+                    <span class="logo-fallback-text">RECB</span>
+                </div>
 
-            <div class="brand-text">
-                <strong>Rajkiya Engineering College</strong>
-                <span>Bijnor • CT Paper Portal</span>
-            </div>
+                <div class="brand-text">
+                    <strong>COLLEGE CT PAPERS</strong>
+                    <span>Rajkiya Engineering College Bijnor</span>
+                </div>
 
-        </a>
-
-
-        <nav class="nav-links">
-
-            <a href="#home" class="active">Home</a>
-            <a href="#papers">Papers</a>
-            <a href="#branches">Branches</a>
-            <a href="#upload">Upload</a>
-            <a href="#about">About</a>
-
-        </nav>
-
-
-        <a href="#upload" class="nav-button">
-            Upload Paper
-        </a>
-
-        <button class="menu-btn" onclick="toggleMenu()">
-            ☰
-        </button>
-
-    </div>
-
-</header>
-
-
-<!-- ================= MOBILE MENU ================= -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <a href="#home">Home</a>
-    <a href="#papers">Papers</a>
-    <a href="#branches">Branches</a>
-    <a href="#upload">Upload Paper</a>
-    <a href="#about">About</a>
-
-</div>
-
-
-<!-- ================= HERO ================= -->
-
-<section class="hero" id="home">
-
-    <div class="hero-background"></div>
-
-    <div class="hero-container">
-
-        <div class="hero-content">
-
-            <div class="college-badge">
-                🎓 Student Powered • Admin Verified
-            </div>
-
-            <h1>
-                Your College
-                <span>CT Papers Library</span>
-            </h1>
-
-            <p class="hero-description">
-                Find previous CT papers, prepare smarter and help
-                your juniors by sharing the papers you have.
-            </p>
-
-
-            <!-- SEARCH -->
-
-            <div class="search-box">
-
-                <span class="search-icon">⌕</span>
-
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search subject, branch, CT or year..."
-                    onkeyup="searchPapers()"
-                >
-
-                <button onclick="searchPapers()">
-                    Search
-                </button>
-
-            </div>
-
-
-            <div class="hero-actions">
-
-                <a href="#papers" class="primary-btn">
-                    Browse Papers
-                    <span>→</span>
-                </a>
-
-                <a href="#upload" class="outline-btn">
-                    📤 Upload Paper
-                </a>
-
-            </div>
+            </a>
 
         </div>
 
+    </header>
 
-        <!-- HERO SIDE CARD -->
 
-        <div class="hero-card">
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-            <div class="card-top">
+    <main>
 
-                <div class="paper-icon">
-                    📄
+        <section class="hero">
+
+            <div class="hero-container">
+
+                <div class="hero-content">
+
+                    <div class="college-badge">
+                        🎓 Rajkiya Engineering College, Bijnor
+                    </div>
+
+                    <h1>
+                        COLLEGE
+                        <span>CT PAPERS</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Previous CT papers — collected in one place.
+                        Upload your paper or find approved papers shared
+                        by students.
+                    </p>
+
+
+                    <!-- MAIN TWO OPTIONS -->
+
+                    <div class="main-options">
+
+                        <!-- Upload -->
+
+                        <button class="main-option upload-option"
+                            onclick="openUpload()">
+
+                            <div class="option-icon">
+                                📤
+                            </div>
+
+                            <div class="option-content">
+                                <h2>Upload Paper</h2>
+                                <p>Share your previous CT paper</p>
+                            </div>
+
+                            <div class="option-arrow">
+                                →
+                            </div>
+
+                        </button>
+
+
+                        <!-- View -->
+
+                        <a href="#papers"
+                            class="main-option view-option">
+
+                            <div class="option-icon">
+                                📚
+                            </div>
+
+                            <div class="option-content">
+                                <h2>View Papers</h2>
+                                <p>Browse approved CT papers</p>
+                            </div>
+
+                            <div class="option-arrow">
+                                →
+                            </div>
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-note">
+                        ✓ Student uploaded &nbsp; • &nbsp;
+                        ✓ Admin verified &nbsp; • &nbsp;
+                        ✓ Free for students
+                    </div>
+
                 </div>
 
-                <span class="verified">
-                    ✓ Verified
-                </span>
+
+                <!-- HERO SIDE CARD -->
+
+                <div class="hero-card">
+
+                    <div class="hero-card-top">
+
+                        <div class="hero-card-icon">
+                            📄
+                        </div>
+
+                        <span class="verified">
+                            ✓ VERIFIED
+                        </span>
+
+                    </div>
+
+                    <h3>
+                        Previous CT Papers
+                    </h3>
+
+                    <p>
+                        IT • EE • CE
+                    </p>
+
+
+                    <div class="hero-card-divider"></div>
+
+
+                    <div class="branch-mini-grid">
+
+                        <div>
+                            <strong>IT</strong>
+                            <span>Information Technology</span>
+                        </div>
+
+                        <div>
+                            <strong>EE</strong>
+                            <span>Electrical Engineering</span>
+                        </div>
+
+                        <div>
+                            <strong>CE</strong>
+                            <span>Civil Engineering</span>
+                        </div>
+
+                    </div>
+
+                    <div class="hero-card-footer">
+                        Admin approval required before publication.
+                    </div>
+
+                </div>
 
             </div>
 
-            <div class="hero-paper-title">
-                Previous CT Papers
+        </section>
+
+
+        <!-- =====================================================
+             PAPERS SECTION
+        ====================================================== -->
+
+        <section class="papers-section" id="papers">
+
+            <div class="section">
+
+                <div class="section-heading">
+
+                    <div class="small-title">
+                        PAPER LIBRARY
+                    </div>
+
+                    <h2>
+                        Approved <span>CT Papers</span>
+                    </h2>
+
+                    <p>
+                        Find previous CT papers shared by students
+                        and verified by the admin.
+                    </p>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="paper-search">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search subject, branch, CT number or year..."
+                        oninput="searchPapers()">
+
+                </div>
+
+
+                <!-- FILTER -->
+
+                <div class="filter-bar">
+
+                    <button
+                        class="filter active"
+                        onclick="filterPapers('ALL', this)">
+                        All
+                    </button>
+
+                    <button
+                        class="filter"
+                        onclick="filterPapers('IT', this)">
+                        IT
+                    </button>
+
+                    <button
+                        class="filter"
+                        onclick="filterPapers('EE', this)">
+                        EE
+                    </button>
+
+                    <button
+                        class="filter"
+                        onclick="filterPapers('CE', this)">
+                        CE
+                    </button>
+
+                </div>
+
+
+                <!-- PAPER COUNT -->
+
+                <div class="papers-top">
+
+                    <div>
+                        <strong id="paperCount">0</strong>
+                        <span>papers available</span>
+                    </div>
+
+                    <span class="approval-label">
+                        ✓ Admin Approved
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     PAPER GRID
+
+                     These are temporary demo papers.
+                     Later script.js will load approved papers
+                     from Firebase.
+                ================================================== -->
+
+                <div class="papers-grid" id="papersGrid">
+
+
+                    <!-- PAPER 1 -->
+
+                    <div class="paper-card"
+                        data-branch="IT">
+
+                        <div class="paper-header">
+
+                            <div class="file-icon">
+                                PDF
+                            </div>
+
+                            <span class="approved">
+                                ✓ APPROVED
+                            </span>
+
+                        </div>
+
+                        <div class="paper-branch">
+                            IT • 3rd Semester
+                        </div>
+
+                        <h3>
+                            Data Structures
+                        </h3>
+
+                        <p>
+                            CT-1 • 2026
+                        </p>
+
+                        <div class="paper-footer">
+
+                            <span>
+                                Previous CT Paper
+                            </span>
+
+                            <button onclick="viewPaper('Data Structures')">
+                                View →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAPER 2 -->
+
+                    <div class="paper-card"
+                        data-branch="EE">
+
+                        <div class="paper-header">
+
+                            <div class="file-icon">
+                                PDF
+                            </div>
+
+                            <span class="approved">
+                                ✓ APPROVED
+                            </span>
+
+                        </div>
+
+                        <div class="paper-branch">
+                            EE • 3rd Semester
+                        </div>
+
+                        <h3>
+                            Electrical Circuits
+                        </h3>
+
+                        <p>
+                            CT-2 • 2026
+                        </p>
+
+                        <div class="paper-footer">
+
+                            <span>
+                                Previous CT Paper
+                            </span>
+
+                            <button onclick="viewPaper('Electrical Circuits')">
+                                View →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAPER 3 -->
+
+                    <div class="paper-card"
+                        data-branch="CE">
+
+                        <div class="paper-header">
+
+                            <div class="file-icon">
+                                PDF
+                            </div>
+
+                            <span class="approved">
+                                ✓ APPROVED
+                            </span>
+
+                        </div>
+
+                        <div class="paper-branch">
+                            CE • 2nd Semester
+                        </div>
+
+                        <h3>
+                            Engineering Mechanics
+                        </h3>
+
+                        <p>
+                            CT-1 • 2026
+                        </p>
+
+                        <div class="paper-footer">
+
+                            <span>
+                                Previous CT Paper
+                            </span>
+
+                            <button onclick="viewPaper('Engineering Mechanics')">
+                                View →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PAPER 4 -->
+
+                    <div class="paper-card"
+                        data-branch="IT">
+
+                        <div class="paper-header">
+
+                            <div class="file-icon">
+                                PDF
+                            </div>
+
+                            <span class="approved">
+                                ✓ APPROVED
+                            </span>
+
+                        </div>
+
+                        <div class="paper-branch">
+                            IT • 4th Semester
+                        </div>
+
+                        <h3>
+                            Database Management System
+                        </h3>
+
+                        <p>
+                            CT-2 • 2026
+                        </p>
+
+                        <div class="paper-footer">
+
+                            <span>
+                                Previous CT Paper
+                            </span>
+
+                            <button onclick="viewPaper('Database Management System')">
+                                View →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMPTY MESSAGE -->
+
+                <div class="empty-papers" id="emptyPapers">
+
+                    <div class="empty-icon">
+                        📚
+                    </div>
+
+                    <h3>
+                        No papers found
+                    </h3>
+
+                    <p>
+                        Try another search or branch filter.
+                    </p>
+
+                </div>
+
             </div>
 
-            <div class="hero-paper-subtitle">
-                Study • Share • Help Juniors
+        </section>
+
+
+        <!-- =====================================================
+             HOW IT WORKS
+        ====================================================== -->
+
+        <section class="how-section">
+
+            <div class="section">
+
+                <div class="section-heading">
+
+                    <div class="small-title">
+                        SIMPLE PROCESS
+                    </div>
+
+                    <h2>
+                        How It <span>Works</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="steps-grid">
+
+
+                    <div class="step-card">
+
+                        <div class="step-number">
+                            01
+                        </div>
+
+                        <div class="step-icon">
+                            📤
+                        </div>
+
+                        <h3>
+                            Upload
+                        </h3>
+
+                        <p>
+                            Submit your CT paper with basic
+                            subject and semester details.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-card">
+
+                        <div class="step-number">
+                            02
+                        </div>
+
+                        <div class="step-icon">
+                            🔍
+                        </div>
+
+                        <h3>
+                            Verification
+                        </h3>
+
+                        <p>
+                            Admin checks the submitted paper
+                            before publishing it.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-card">
+
+                        <div class="step-number">
+                            03
+                        </div>
+
+                        <div class="step-icon">
+                            📚
+                        </div>
+
+                        <h3>
+                            Students View
+                        </h3>
+
+                        <p>
+                            Once approved, the paper becomes
+                            available in the paper library.
+                        </p>
+
+                    </div>
+
+                </div>
+
             </div>
 
+        </section>
 
-            <div class="mini-stats">
+
+        <!-- =====================================================
+             UPLOAD CTA
+        ====================================================== -->
+
+        <section class="upload-section">
+
+            <div class="upload-container">
+
+                <div class="upload-content">
+
+                    <div class="small-title">
+                        HELP YOUR COLLEGE
+                    </div>
+
+                    <h2>
+                        Have a CT paper?
+                        <span>Share it.</span>
+                    </h2>
+
+                    <p>
+                        Help other students prepare better by
+                        contributing your previous CT papers.
+                    </p>
+
+                    <button
+                        class="white-btn"
+                        onclick="openUpload()">
+
+                        📤 Upload Paper
+
+                    </button>
+
+                </div>
+
+
+                <div class="upload-info-card">
+
+                    <div class="upload-info-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        What can you upload?
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            ✓ CT-1 Papers
+                        </li>
+
+                        <li>
+                            ✓ CT-2 Papers
+                        </li>
+
+                        <li>
+                            ✓ CT-3 Papers
+                        </li>
+
+                        <li>
+                            ✓ PDF Format
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <div class="footer-logo">
+
+                    <img src="images/college-logo.png"
+                        alt="College Logo"
+                        onerror="this.style.display='none';">
+
+                </div>
 
                 <div>
-                    <strong>03</strong>
-                    <span>Branches</span>
-                </div>
 
-                <div>
-                    <strong>CT</strong>
-                    <span>Papers</span>
-                </div>
+                    <strong>
+                        COLLEGE CT PAPERS
+                    </strong>
 
-                <div>
-                    <strong>∞</strong>
-                    <span>Contributors</span>
+                    <span>
+                        Rajkiya Engineering College, Bijnor
+                    </span>
+
                 </div>
 
             </div>
 
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= STATS ================= -->
-
-<section class="stats-section">
-
-    <div class="stats-container">
-
-        <div class="stat">
-            <div class="stat-icon">📚</div>
-            <div>
-                <strong id="paperCount">0</strong>
-                <span>Available Papers</span>
-            </div>
-        </div>
-
-
-        <div class="stat">
-            <div class="stat-icon">🏫</div>
-            <div>
-                <strong>03</strong>
-                <span>Branches</span>
-            </div>
-        </div>
-
-
-        <div class="stat">
-            <div class="stat-icon">🎓</div>
-            <div>
-                <strong>All</strong>
-                <span>Students</span>
-            </div>
-        </div>
-
-
-        <div class="stat">
-            <div class="stat-icon">✓</div>
-            <div>
-                <strong>100%</strong>
-                <span>Admin Verified</span>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= BRANCHES ================= -->
-
-<section class="section" id="branches">
-
-    <div class="section-heading">
-
-        <span class="small-title">
-            EXPLORE PAPERS
-        </span>
-
-        <h2>
-            Browse By <span>Branch</span>
-        </h2>
-
-        <p>
-            Select your branch and find previous CT papers
-            collected from students.
-        </p>
-
-    </div>
-
-
-    <div class="branch-grid">
-
-
-        <!-- IT -->
-
-        <div class="branch-card">
-
-            <div class="branch-number">
-                01
-            </div>
-
-            <div class="branch-icon-large">
-                💻
-            </div>
-
-            <h3>Information Technology</h3>
-
-            <div class="branch-code">
-                IT
-            </div>
 
             <p>
-                CT papers for Information Technology students.
-            </p>
-
-            <button onclick="filterBranch('IT')">
-                Explore IT Papers
-                <span>→</span>
-            </button>
-
-        </div>
-
-
-        <!-- EE -->
-
-        <div class="branch-card">
-
-            <div class="branch-number">
-                02
-            </div>
-
-            <div class="branch-icon-large">
-                ⚡
-            </div>
-
-            <h3>Electrical Engineering</h3>
-
-            <div class="branch-code">
-                EE
-            </div>
-
-            <p>
-                CT papers for Electrical Engineering students.
-            </p>
-
-            <button onclick="filterBranch('EE')">
-                Explore EE Papers
-                <span>→</span>
-            </button>
-
-        </div>
-
-
-        <!-- CE -->
-
-        <div class="branch-card">
-
-            <div class="branch-number">
-                03
-            </div>
-
-            <div class="branch-icon-large">
-                🏗️
-            </div>
-
-            <h3>Civil Engineering</h3>
-
-            <div class="branch-code">
-                CE
-            </div>
-
-            <p>
-                CT papers for Civil Engineering students.
-            </p>
-
-            <button onclick="filterBranch('CE')">
-                Explore CE Papers
-                <span>→</span>
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PAPERS ================= -->
-
-<section class="section papers-section" id="papers">
-
-    <div class="section-heading">
-
-        <span class="small-title">
-            PAPER LIBRARY
-        </span>
-
-        <h2>
-            Recent <span>CT Papers</span>
-        </h2>
-
-        <p>
-            Papers approved by the admin are available for everyone.
-        </p>
-
-    </div>
-
-
-    <div class="filter-bar">
-
-        <button class="filter active" onclick="filterPapers('ALL', this)">
-            All
-        </button>
-
-        <button class="filter" onclick="filterPapers('IT', this)">
-            IT
-        </button>
-
-        <button class="filter" onclick="filterPapers('EE', this)">
-            EE
-        </button>
-
-        <button class="filter" onclick="filterPapers('CE', this)">
-            CE
-        </button>
-
-    </div>
-
-
-    <div class="papers-grid" id="papersGrid">
-
-
-        <!-- PAPER 1 -->
-
-        <article class="paper-card" data-branch="IT">
-
-            <div class="paper-header">
-
-                <div class="file-icon">
-                    PDF
-                </div>
-
-                <span class="approved">
-                    ✓ Approved
-                </span>
-
-            </div>
-
-            <div class="paper-branch">
-                IT
-            </div>
-
-            <h3>Data Structures</h3>
-
-            <p>
-                CT-1 • 3rd Semester • 2026
-            </p>
-
-            <div class="paper-footer">
-
-                <span>
-                    📄 PDF
-                </span>
-
-                <button onclick="viewPaper('Data Structures')">
-                    View Paper →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- PAPER 2 -->
-
-        <article class="paper-card" data-branch="EE">
-
-            <div class="paper-header">
-
-                <div class="file-icon">
-                    PDF
-                </div>
-
-                <span class="approved">
-                    ✓ Approved
-                </span>
-
-            </div>
-
-            <div class="paper-branch">
-                EE
-            </div>
-
-            <h3>Electrical Circuits</h3>
-
-            <p>
-                CT-2 • 3rd Semester • 2026
-            </p>
-
-            <div class="paper-footer">
-
-                <span>
-                    📄 PDF
-                </span>
-
-                <button onclick="viewPaper('Electrical Circuits')">
-                    View Paper →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- PAPER 3 -->
-
-        <article class="paper-card" data-branch="CE">
-
-            <div class="paper-header">
-
-                <div class="file-icon">
-                    PDF
-                </div>
-
-                <span class="approved">
-                    ✓ Approved
-                </span>
-
-            </div>
-
-            <div class="paper-branch">
-                CE
-            </div>
-
-            <h3>Engineering Mechanics</h3>
-
-            <p>
-                CT-1 • 2nd Semester • 2026
-            </p>
-
-            <div class="paper-footer">
-
-                <span>
-                    📄 PDF
-                </span>
-
-                <button onclick="viewPaper('Engineering Mechanics')">
-                    View Paper →
-                </button>
-
-            </div>
-
-        </article>
-
-
-        <!-- PAPER 4 -->
-
-        <article class="paper-card" data-branch="IT">
-
-            <div class="paper-header">
-
-                <div class="file-icon">
-                    PDF
-                </div>
-
-                <span class="approved">
-                    ✓ Approved
-                </span>
-
-            </div>
-
-            <div class="paper-branch">
-                IT
-            </div>
-
-            <h3>Database Management System</h3>
-
-            <p>
-                CT-2 • 4th Semester • 2026
-            </p>
-
-            <div class="paper-footer">
-
-                <span>
-                    📄 PDF
-                </span>
-
-                <button onclick="viewPaper('Database Management System')">
-                    View Paper →
-                </button>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ================= UPLOAD CTA ================= -->
-
-<section class="upload-section" id="upload">
-
-    <div class="upload-container">
-
-        <div class="upload-content">
-
-            <span class="small-title">
-                HELP YOUR JUNIORS
-            </span>
-
-            <h2>
-                Have a Previous
-                <span>CT Paper?</span>
-            </h2>
-
-            <p>
-                Upload your paper and contribute to the college
-                paper library. After admin verification, it will
-                become available to all students.
-            </p>
-
-            <button class="white-btn" onclick="openUpload()">
-                📤 Upload Your Paper
-                <span>→</span>
-            </button>
-
-        </div>
-
-
-        <div class="upload-steps">
-
-            <div class="upload-step">
-
-                <div>01</div>
-
-                <strong>Upload</strong>
-
-                <span>
-                    Submit your paper
-                </span>
-
-            </div>
-
-
-            <div class="step-line"></div>
-
-
-            <div class="upload-step">
-
-                <div>02</div>
-
-                <strong>Verify</strong>
-
-                <span>
-                    Admin checks it
-                </span>
-
-            </div>
-
-
-            <div class="step-line"></div>
-
-
-            <div class="upload-step">
-
-                <div>03</div>
-
-                <strong>Publish</strong>
-
-                <span>
-                    Everyone can access
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-
-<section class="section about-section" id="about">
-
-    <div class="about-grid">
-
-        <div>
-
-            <span class="small-title">
-                OUR PURPOSE
-            </span>
-
-            <h2>
-                Built by Students,
-                <span>For Students.</span>
-            </h2>
-
-        </div>
-
-
-        <div>
-
-            <p>
-                College CT Paper Portal is created to preserve
-                previous CT papers and make them easily accessible
-                to juniors.
-            </p>
-
-            <p>
-                Students can contribute papers from IT, EE and CE.
-                Every submission is reviewed by the admin before
-                it becomes publicly available.
+                Previous CT Papers — One Place
             </p>
 
         </div>
 
-    </div>
 
-</section>
+        <div class="copyright">
 
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <div class="footer-container">
-
-        <div class="footer-brand">
-
-            <div class="footer-logo">
-                <img src="images/college-logo.png"
-                     alt="College Logo"
-                     onerror="this.style.display='none';">
-            </div>
-
-            <div>
-                <strong>Rajkiya Engineering College</strong>
-                <span>Bijnor</span>
-            </div>
+            © 2026 College CT Papers • Rajkiya Engineering College, Bijnor
 
         </div>
 
-
-        <p>
-            College CT Paper Portal • Built for students, by students.
-        </p>
+    </footer>
 
 
-        <div class="footer-links">
+    <!-- =====================================================
+         UPLOAD MODAL
+    ====================================================== -->
 
-            <a href="#home">Home</a>
-            <a href="#papers">Papers</a>
-            <a href="#upload">Upload</a>
+    <div class="modal" id="uploadModal">
 
-        </div>
+        <div class="modal-box">
 
-    </div>
-
-
-    <div class="copyright">
-        © 2026 Rajkiya Engineering College, Bijnor • CT Paper Portal
-    </div>
-
-</footer>
-
-
-<!-- ================= UPLOAD MODAL ================= -->
-
-<div class="modal" id="uploadModal">
-
-    <div class="modal-box">
-
-        <button class="close-btn" onclick="closeUpload()">×</button>
-
-        <div class="modal-icon">📤</div>
-
-        <h2>Upload CT Paper</h2>
-
-        <p>Submit your previous CT paper for admin verification.</p>
-
-        <form id="uploadForm">
-
-            <!-- Branch -->
-            <label>Branch</label>
-            <select id="branch" required>
-                <option value="">Select Branch</option>
-                <option value="IT">Information Technology</option>
-                <option value="EE">Electrical Engineering</option>
-                <option value="CE">Civil Engineering</option>
-            </select>
-
-            <!-- Semester -->
-            <label>Semester</label>
-            <select id="semester" required>
-                <option value="">Select Semester</option>
-                <option value="1">1st Semester</option>
-                <option value="2">2nd Semester</option>
-                <option value="3">3rd Semester</option>
-                <option value="4">4th Semester</option>
-                <option value="5">5th Semester</option>
-                <option value="6">6th Semester</option>
-                <option value="7">7th Semester</option>
-                <option value="8">8th Semester</option>
-            </select>
-
-            <!-- Subject -->
-            <label>Subject</label>
-            <input
-                type="text"
-                id="subject"
-                placeholder="Enter subject name"
-                required
-            >
-
-            <!-- CT Number -->
-            <label>CT Number</label>
-            <select id="ctNumber" required>
-                <option value="">Select CT</option>
-                <option value="CT-1">CT-1</option>
-                <option value="CT-2">CT-2</option>
-                <option value="CT-3">CT-3</option>
-            </select>
-
-            <!-- Year -->
-            <label>Year</label>
-            <input
-                type="number"
-                id="year"
-                value="2026"
-                required
-            >
-
-            <!-- PDF -->
-            <label>CT Paper PDF</label>
-            <input
-                type="file"
-                id="paperFile"
-                accept=".pdf"
-                required
-            >
-
-            <!-- Submit -->
             <button
-                type="button"
-                class="modal-btn"
-                onclick="submitPaper()">
-                Submit Paper
+                class="close-btn"
+                onclick="closeUpload()"
+                aria-label="Close">
+                ×
             </button>
 
-        </form>
+
+            <!-- MODAL HEADER -->
+
+            <div class="modal-header">
+
+                <div class="modal-icon">
+                    📤
+                </div>
+
+                <div>
+
+                    <h2>
+                        Upload CT Paper
+                    </h2>
+
+                    <p>
+                        Share your previous CT paper with students.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADMIN NOTE -->
+
+            <div class="upload-note">
+
+                <span>
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        Admin Verified
+                    </strong>
+
+                    <small>
+                        Your paper will appear after admin approval.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="uploadForm">
+
+
+                <!-- BRANCH + SEMESTER -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="branch">
+                            Branch
+                        </label>
+
+                        <select id="branch" required>
+
+                            <option value="">
+                                Select Branch
+                            </option>
+
+                            <option value="IT">
+                                Information Technology
+                            </option>
+
+                            <option value="EE">
+                                Electrical Engineering
+                            </option>
+
+                            <option value="CE">
+                                Civil Engineering
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="semester">
+                            Semester
+                        </label>
+
+                        <select id="semester" required>
+
+                            <option value="">
+                                Select Semester
+                            </option>
+
+                            <option value="1">
+                                1st Semester
+                            </option>
+
+                            <option value="2">
+                                2nd Semester
+                            </option>
+
+                            <option value="3">
+                                3rd Semester
+                            </option>
+
+                            <option value="4">
+                                4th Semester
+                            </option>
+
+                            <option value="5">
+                                5th Semester
+                            </option>
+
+                            <option value="6">
+                                6th Semester
+                            </option>
+
+                            <option value="7">
+                                7th Semester
+                            </option>
+
+                            <option value="8">
+                                8th Semester
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBJECT -->
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="e.g. Data Structures"
+                        required>
+
+                </div>
+
+
+                <!-- CT NUMBER + YEAR -->
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="ctNumber">
+                            CT Number
+                        </label>
+
+                        <select id="ctNumber" required>
+
+                            <option value="">
+                                Select CT
+                            </option>
+
+                            <option value="CT-1">
+                                CT-1
+                            </option>
+
+                            <option value="CT-2">
+                                CT-2
+                            </option>
+
+                            <option value="CT-3">
+                                CT-3
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="year">
+                            Year
+                        </label>
+
+                        <input
+                            type="number"
+                            id="year"
+                            value="2026"
+                            min="2000"
+                            max="2100"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PDF -->
+
+                <div class="form-group">
+
+                    <label for="paperFile">
+                        CT Paper PDF
+                    </label>
+
+                    <div class="file-upload">
+
+                        <div class="file-upload-icon">
+                            📄
+                        </div>
+
+                        <div class="file-upload-text">
+
+                            <strong>
+                                Choose your CT paper
+                            </strong>
+
+                            <span>
+                                PDF files only
+                            </span>
+
+                        </div>
+
+                        <input
+                            type="file"
+                            id="paperFile"
+                            accept=".pdf,application/pdf"
+                            required>
+
+                        <span class="choose-file">
+                            Browse
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="button"
+                    class="modal-btn"
+                    onclick="submitPaper()">
+
+                    <span>
+                        Submit Paper
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <p class="modal-bottom-note">
+                    By submitting, you agree that the paper can be
+                    published after admin verification.
+                </p>
+
+            </form>
+
+        </div>
 
     </div>
 
-</div>
-            <!-- Branch -->
-            <label>Branch</label>
-            <select id="branch" required>
-                <option value="">Select Branch</option>
-                <option value="IT">Information Technology</option>
-                <option value="EE">Electrical Engineering</option>
-                <option value="CE">Civil Engineering</option>
-            </select>
 
-            <!-- Semester -->
-            <label>Semester</label>
-            <select id="semester" required>
-                <option value="">Select Semester</option>
-                <option value="1">1st Semester</option>
-                <option value="2">2nd Semester</option>
-                <option value="3">3rd Semester</option>
-                <option value="4">4th Semester</option>
-                <option value="5">5th Semester</option>
-                <option value="6">6th Semester</option>
-                <option value="7">7th Semester</option>
-                <option value="8">8th Semester</option>
-            </select>
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
 
-            <!-- Subject -->
-            <label>Subject</label>
-            <input
-                type="text"
-                id="subject"
-                placeholder="Enter subject name"
-                required
-            >
+    <script type="module" src="script.js"></script>
 
-            <!-- CT Number -->
-            <label>CT Number</label>
-            <select id="ctNumber" required>
-                <option value="">Select CT</option>
-                <option value="CT-1">CT-1</option>
-                <option value="CT-2">CT-2</option>
-                <option value="CT-3">CT-3</option>
-            </select>
-
-            <!-- Year -->
-            <label>Year</label>
-            <input
-                type="number"
-                id="year"
-                value="2026"
-                required
-            >
-
-            <!-- PDF -->
-            <label>CT Paper PDF</label>
-            <input
-                type="file"
-                id="paperFile"
-                accept=".pdf"
-                required
-            >
-
-            <button type="button" class="modal-btn" onclick="submitPaper()">
-                Submit Paper
-            </button>
-
-        </form>
-
-    </div>
-
-</div>
-
-    </div>
-
-</div>
-
-<script type="module" src="script.js"></script>
 </body>
+
 </html>
