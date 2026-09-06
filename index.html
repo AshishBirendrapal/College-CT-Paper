@@ -744,57 +744,161 @@
 
     <div class="modal-box">
 
-        <button class="close-btn" onclick="closeUpload()">
-            ×
-        </button>
+        <button class="close-btn" onclick="closeUpload()">×</button>
 
-        <div class="modal-icon">
-            📤
-        </div>
+        <div class="modal-icon">📤</div>
 
         <h2>Upload CT Paper</h2>
 
-        <p>
-            Student upload system will be connected to Firebase
-            in the next step.
-        </p>
+        <p>Submit your previous CT paper for admin verification.</p>
 
+        <form id="uploadForm">
 
-        <div class="future-flow">
+            <!-- Branch -->
+            <label>Branch</label>
+            <select id="branch" required>
+                <option value="">Select Branch</option>
+                <option value="IT">Information Technology</option>
+                <option value="EE">Electrical Engineering</option>
+                <option value="CE">Civil Engineering</option>
+            </select>
 
-            <div>
-                <span>01</span>
-                Select Branch
-            </div>
+            <!-- Semester -->
+            <label>Semester</label>
+            <select id="semester" required>
+                <option value="">Select Semester</option>
+                <option value="1">1st Semester</option>
+                <option value="2">2nd Semester</option>
+                <option value="3">3rd Semester</option>
+                <option value="4">4th Semester</option>
+                <option value="5">5th Semester</option>
+                <option value="6">6th Semester</option>
+                <option value="7">7th Semester</option>
+                <option value="8">8th Semester</option>
+            </select>
 
-            <div>
-                <span>02</span>
-                Select Subject
-            </div>
+            <!-- Subject -->
+            <label>Subject</label>
+            <input
+                type="text"
+                id="subject"
+                placeholder="Enter subject name"
+                required
+            >
 
-            <div>
-                <span>03</span>
-                Upload PDF
-            </div>
+            <!-- CT Number -->
+            <label>CT Number</label>
+            <select id="ctNumber" required>
+                <option value="">Select CT</option>
+                <option value="CT-1">CT-1</option>
+                <option value="CT-2">CT-2</option>
+                <option value="CT-3">CT-3</option>
+            </select>
 
-            <div>
-                <span>04</span>
-                Admin Approval
-            </div>
+            <!-- Year -->
+            <label>Year</label>
+            <input
+                type="number"
+                id="year"
+                value="2026"
+                required
+            >
 
-        </div>
+            <!-- PDF -->
+            <label>CT Paper PDF</label>
+            <input
+                type="file"
+                id="paperFile"
+                accept=".pdf"
+                required
+            >
 
+            <!-- Submit -->
+            <button
+                type="button"
+                class="modal-btn"
+                onclick="submitPaper()">
+                Submit Paper
+            </button>
 
-        <button class="modal-btn" onclick="closeUpload()">
-            Got it
-        </button>
+        </form>
+
+    </div>
+
+</div>
+            <!-- Branch -->
+            <label>Branch</label>
+            <select id="branch" required>
+                <option value="">Select Branch</option>
+                <option value="IT">Information Technology</option>
+                <option value="EE">Electrical Engineering</option>
+                <option value="CE">Civil Engineering</option>
+            </select>
+
+            <!-- Semester -->
+            <label>Semester</label>
+            <select id="semester" required>
+                <option value="">Select Semester</option>
+                <option value="1">1st Semester</option>
+                <option value="2">2nd Semester</option>
+                <option value="3">3rd Semester</option>
+                <option value="4">4th Semester</option>
+                <option value="5">5th Semester</option>
+                <option value="6">6th Semester</option>
+                <option value="7">7th Semester</option>
+                <option value="8">8th Semester</option>
+            </select>
+
+            <!-- Subject -->
+            <label>Subject</label>
+            <input
+                type="text"
+                id="subject"
+                placeholder="Enter subject name"
+                required
+            >
+
+            <!-- CT Number -->
+            <label>CT Number</label>
+            <select id="ctNumber" required>
+                <option value="">Select CT</option>
+                <option value="CT-1">CT-1</option>
+                <option value="CT-2">CT-2</option>
+                <option value="CT-3">CT-3</option>
+            </select>
+
+            <!-- Year -->
+            <label>Year</label>
+            <input
+                type="number"
+                id="year"
+                value="2026"
+                required
+            >
+
+            <!-- PDF -->
+            <label>CT Paper PDF</label>
+            <input
+                type="file"
+                id="paperFile"
+                accept=".pdf"
+                required
+            >
+
+            <button type="button" class="modal-btn" onclick="submitPaper()">
+                Submit Paper
+            </button>
+
+        </form>
 
     </div>
 
 </div>
 
+    </div>
+
+</div>
 
 <script type="module" src="script.js"></script>
-
 </body>
 </html>
