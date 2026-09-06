@@ -4,7 +4,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth
 import { getStorage } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-storage.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBqWxSxuNH8KZ5TgzYnib8JDnZ-LHA1gC4",
+  apiKey: "AIzaSyBa4ixtbFsLZlJFDGNr3q7utgtx5M6gNDk",
   authDomain: "college-ct-paper-4386e.firebaseapp.com",
   projectId: "college-ct-paper-4386e",
   storageBucket: "college-ct-paper-4386e.firebasestorage.app",
