@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Panel - College CT Paper</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #222;
+        }
+
+        .header {
+            background: #071a52;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h2 {
+            font-size: 22px;
+        }
+
+        #logoutBtn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        /* LOGIN */
+
+        #loginSection {
+            max-width: 420px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+        }
+
+        #loginSection h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #071a52;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #loginBtn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            background: #0d47d9;
+            color: white;
+            font-size: 16px;
+        }
+
+        #loginMessage {
+            margin-top: 15px;
+            text-align: center;
+            color: red;
+        }
+
+        /* ADMIN */
+
+        #adminSection {
+            display: none;
+        }
+
+        .title {
+            margin-bottom: 25px;
+            color: #071a52;
+        }
+
+        .paper-card {
+            background: white;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .paper-card h3 {
+            color: #071a52;
+            margin-bottom: 10px;
+        }
+
+        .paper-info {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            background: #fff3cd;
+            color: #856404;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .actions {
+            margin-top: 18px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .approve {
+            background: #198754;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        .reject {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        .view {
+            background: #0d6efd;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+        }
+
+        #loading {
+            text-align: center;
+            color: #666;
+        }
+
+        #noPapers {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            display: none;
+        }
+
+        @media(max-width:600px) {
+            .header {
+                padding: 15px;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .actions button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <div class="header">
+        <h2>College CT Paper - Admin</h2>
+
+        <button id="logoutBtn">
+            Logout
+        </button>
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <section id="loginSection">
+
+        <h2>Admin Login</h2>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Admin Email"
+        >
+
+        <input
+            type="password"
+            id="password"
+            placeholder="Password"
+        >
+
+        <button id="loginBtn">
+            Login
+        </button>
+
+        <p id="loginMessage"></p>
+
+    </section>
+
+
+    <!-- ADMIN PANEL -->
+
+    <section id="adminSection">
+
+        <div class="container">
+
+            <h2 class="title">
+                Pending CT Papers
+            </h2>
+
+            <p id="loading">
+                Loading papers...
+            </p>
+
+            <div id="papersContainer"></div>
+
+            <div id="noPapers">
+                No pending papers available.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FIREBASE -->
+
+    <script type="module">
+
+        import { auth, db } from "./firebase-config.js";
+
+        import {
+            signInWithEmailAndPassword,
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+        import {
+            collection,
+            query,
+            where,
+            getDocs,
+            doc,
+            updateDoc
+        } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+
+        /* ===============================
+           ELEMENTS
+        =============================== */
+
+        const loginSection =
+            document.getElementById("loginSection");
+
+        const adminSection =
+            document.getElementById("adminSection");
+
+        const loginBtn =
+            document.getElementById("loginBtn");
+
+        const logoutBtn =
+            document.getElementById("logoutBtn");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+        const papersContainer =
+            document.getElementById("papersContainer");
+
+        const loading =
+            document.getElementById("loading");
+
+        const noPapers =
+            document.getElementById("noPapers");
+
+
+        /* ===============================
+           LOGIN
+        =============================== */
+
+        loginBtn.addEventListener("click", async () => {
+
+            const email =
+                document.getElementById("email").value.trim();
+
+            const password =
+                document.getElementById("password").value;
+
+            if (!email || !password) {
+
+                loginMessage.textContent =
+                    "Email aur password enter karo.";
+
+                return;
+            }
+
+            loginMessage.textContent =
+                "Logging in...";
+
+            try {
+
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+                loginMessage.textContent = "";
+
+            } catch (error) {
+
+                console.error(error);
+
+                loginMessage.textContent =
+                    "Login failed: " + error.message;
+            }
+
+        });
+
+
+        /* ===============================
+           AUTH CHECK
+        =============================== */
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (user) {
+
+                loginSection.style.display = "none";
+
+                adminSection.style.display = "block";
+
+                logoutBtn.style.display = "block";
+
+                loadPendingPapers();
+
+            } else {
+
+                loginSection.style.display = "block";
+
+                adminSection.style.display = "none";
+
+                logoutBtn.style.display = "none";
+            }
+
+        });
+
+
+        /* ===============================
+           LOGOUT
+        =============================== */
+
+        logoutBtn.addEventListener("click", async () => {
+
+            await signOut(auth);
+
+        });
+
+
+        /* ===============================
+           LOAD PENDING PAPERS
+        =============================== */
+
+        async function loadPendingPapers() {
+
+            papersContainer.innerHTML = "";
+
+            loading.style.display = "block";
+
+            noPapers.style.display = "none";
+
+            try {
+
+                const q = query(
+                    collection(db, "papers"),
+                    where("status", "==", "pending")
+                );
+
+                const snapshot =
+                    await getDocs(q);
+
+                loading.style.display = "none";
+
+                if (snapshot.empty) {
+
+                    noPapers.style.display = "block";
+
+                    return;
+                }
+
+
+                snapshot.forEach((paperDoc) => {
+
+                    const paper =
+                        paperDoc.data();
+
+                    createPaperCard(
+                        paperDoc.id,
+                        paper
+                    );
+
+                });
+
+            } catch (error) {
+
+                console.error(error);
+
+                loading.textContent =
+                    "Papers load nahi ho paaye.";
+
+            }
+
+        }
+
+
+        /* ===============================
+           CREATE PAPER CARD
+        =============================== */
+
+        function createPaperCard(id, paper) {
+
+            const card =
+                document.createElement("div");
+
+            card.className = "paper-card";
+
+            card.innerHTML = `
+
+                <h3>
+                    ${paper.subject || "Unknown Subject"}
+                </h3>
+
+                <div class="paper-info">
+
+                    <strong>Branch:</strong>
+                    ${paper.branch || "-"}
+                    <br>
+
+                    <strong>Semester:</strong>
+                    ${paper.semester || "-"}
+                    <br>
+
+                    <strong>CT Number:</strong>
+                    ${paper.ctNumber || "-"}
+                    <br>
+
+                    <strong>Year:</strong>
+                    ${paper.year || "-"}
+                    <br>
+
+                    <strong>File:</strong>
+                    ${paper.fileName || "No file"}
+
+                    <br>
+
+                    <span class="status">
+                        Pending Approval
+                    </span>
+
+                </div>
+
+                <div class="actions">
+
+                    ${
+                        paper.fileUrl
+                        ?
+                        `<button class="view"
+                            onclick="window.open('${paper.fileUrl}', '_blank')">
+                            View Paper
+                        </button>`
+                        :
+                        ""
+                    }
+
+                    <button
+                        class="approve"
+                        data-id="${id}">
+                        ✓ Approve
+                    </button>
+
+                    <button
+                        class="reject"
+                        data-id="${id}">
+                        ✕ Reject
+                    </button>
+
+                </div>
+            `;
+
+
+            /* APPROVE */
+
+            card
+                .querySelector(".approve")
+                .addEventListener("click", () => {
+
+                    updatePaperStatus(
+                        id,
+                        "approved"
+                    );
+
+                });
+
+
+            /* REJECT */
+
+            card
+                .querySelector(".reject")
+                .addEventListener("click", () => {
+
+                    updatePaperStatus(
+                        id,
+                        "rejected"
+                    );
+
+                });
+
+
+            papersContainer.appendChild(card);
+
+        }
+
+
+        /* ===============================
+           UPDATE STATUS
+        =============================== */
+
+        async function updatePaperStatus(
+            id,
+            status
+        ) {
+
+            const action =
+                status === "approved"
+                ? "approve"
+                : "reject";
+
+
+            const confirmAction =
+                confirm(
+                    `Kya aap paper ko ${action} karna chahte hain?`
+                );
+
+
+            if (!confirmAction) {
+                return;
+            }
+
+
+            try {
+
+                await updateDoc(
+                    doc(db, "papers", id),
+                    {
+                        status: status
+                    }
+                );
+
+
+                alert(
+                    status === "approved"
+                    ? "Paper approved successfully!"
+                    : "Paper rejected successfully!"
+                );
+
+
+                loadPendingPapers();
+
+            } catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Error: " + error.message
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
